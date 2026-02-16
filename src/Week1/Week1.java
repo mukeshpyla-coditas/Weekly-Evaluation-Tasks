@@ -1,3 +1,5 @@
+package Week1;
+
 import java.util.*;
 
 /*
@@ -163,7 +165,7 @@ public class Week1 {
         while(flag) {
             System.out.println("WELCOME TO CODITAS EMPLOYEE PAYROLL SYSTEM!!");
             System.out.println("Please select the employee type: ");
-            System.out.println("1 -> Developer\n2 -> Manager\n3 -> Intern");
+            System.out.println("1 -> Week1.Developer\n2 -> Week1.Manager\n3 -> Week1.Intern");
             System.out.print("Enter your choice: ");
             int choice = s.nextInt();
             s.nextLine();
@@ -222,7 +224,7 @@ public class Week1 {
     }
 
     public static void printDetails(Employee employeeObject) {
-        System.out.println("Employee Type: " + employeeObject.getNameOfClass());
+        System.out.println("Week1.Employee Type: " + employeeObject.getNameOfClass());
         System.out.printf("Gross Salary: %.2f", employeeObject.grossSalaryCalculation());
         System.out.println();
         System.out.printf("Attendance Deduction: %.2f", employeeObject.attendanceDeduction());
