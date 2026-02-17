@@ -29,7 +29,7 @@ abstract class Employee {
     }
 
     public String getNameOfClass() {
-        return this.getClass().getName();
+        return this.getClass().getSimpleName();
     }
 
     public double attendanceDeduction() {
