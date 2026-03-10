@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 
 public class ReportGeneration {
     public static void main(String[] args) throws InterruptedException {
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
         CountDownLatch latch = new CountDownLatch(8);
         int noOfTasks = 8;
         for(int i = 1; i <= noOfTasks; i++) {
