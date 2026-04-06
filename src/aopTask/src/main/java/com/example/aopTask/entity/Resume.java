@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +20,11 @@ public class Resume {
     private Integer id;
 
     private Integer applicantId;
+    private String applicantName;
+    private String applicantEmail;
+    private List<String> skills;
+    private Integer experience;
+    private String description;
     private String fileType;
     private Double fileSize;
-    private String description;
 }
