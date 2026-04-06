@@ -17,4 +17,12 @@ public class UserService {
         user.setRole("ROLE_" + user.getRole());
         return userRepository.save(user);
     }
+
+    public User loginUser(User user) {
+        User user1 = userRepository.findByUsername(user.getUsername())
+                .orElseThrow(() -> new RuntimeException("No specified user present. Please do register before login"));
+
+        System.out.println("User successfully logged in.");
+        return user1;
+    }
 }

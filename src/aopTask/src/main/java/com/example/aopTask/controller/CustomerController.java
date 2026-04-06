@@ -1,6 +1,7 @@
 package com.example.aopTask.controller;
 
 import com.example.aopTask.entity.Customer;
+import com.example.aopTask.entity.Payment;
 import com.example.aopTask.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,5 +22,10 @@ public class CustomerController {
     @GetMapping("/getAll")
     public List<Customer> getAllCustomer() {
         return customerService.getAll();
+    }
+
+    @PostMapping("/payment/{amount}")
+    public Payment orderPayment(@RequestBody Payment payment, @PathVariable Double amount) {
+        return customerService.performPayment(payment, amount);
     }
 }

@@ -2,7 +2,6 @@ package com.example.aopTask.aspect;
 
 import com.example.aopTask.entity.Audit;
 import com.example.aopTask.entity.Customer;
-import com.example.aopTask.entity.Product;
 import com.example.aopTask.entity.User;
 import com.example.aopTask.repository.AuditRepository;
 import com.example.aopTask.repository.UserRepository;

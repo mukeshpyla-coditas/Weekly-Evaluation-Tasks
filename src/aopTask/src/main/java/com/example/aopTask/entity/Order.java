@@ -1,5 +1,6 @@
 package com.example.aopTask.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class Order {
     private LocalDateTime purchaseDate;
 
     @OneToOne(mappedBy = "order")
-    @JsonIgnoreProperties("order")
+    @JsonIgnore
     private Customer customer;
 
     @ManyToMany
@@ -35,6 +36,6 @@ public class Order {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    @JsonIgnoreProperties("orders")
+    @JsonIgnore
     private List<Product> productList = new ArrayList<>();
 }

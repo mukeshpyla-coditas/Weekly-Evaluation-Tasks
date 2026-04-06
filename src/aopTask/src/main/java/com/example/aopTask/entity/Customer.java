@@ -1,5 +1,6 @@
 package com.example.aopTask.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "order_id")
-    @JsonIgnoreProperties("customer")
+    @JsonIgnore
     private Order order;
 
     @ManyToMany
