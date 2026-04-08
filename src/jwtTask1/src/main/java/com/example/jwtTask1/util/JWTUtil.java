@@ -10,6 +10,7 @@ import java.util.Date;
 
 @Service
 public class JWTUtil {
+    private final long EXPIRATION_TIME = 1000 * 60 * 10;
     private final String secret = "my-app-contains-secret-key-mukesh-narayana-1234567890!@#$%^&*()";
 
     private final SecretKey key = Keys.hmacShaKeyFor(secret.getBytes());
@@ -19,7 +20,7 @@ public class JWTUtil {
                 .claims()
                 .subject(username)
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() * 60 * 60 * 10))
+                .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .and()
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
