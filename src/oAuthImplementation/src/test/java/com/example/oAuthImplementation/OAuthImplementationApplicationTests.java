@@ -1,0 +1,13 @@
+package com.example.oAuthImplementation;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class OAuthImplementationApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
