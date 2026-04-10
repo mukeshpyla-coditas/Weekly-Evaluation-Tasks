@@ -4,8 +4,10 @@ import com.example.jwtFinal.dto.LoginRequestDTO;
 import com.example.jwtFinal.dto.RegisterRequestDTO;
 import com.example.jwtFinal.dto.RegisterResponseDTO;
 import com.example.jwtFinal.dto.TokenResponseDto;
+import com.example.jwtFinal.entity.RefreshToken;
 import com.example.jwtFinal.entity.User;
 import com.example.jwtFinal.exception.InvalidAuthenticationException;
+import com.example.jwtFinal.service.RefreshTokenService;
 import com.example.jwtFinal.service.UserService;
 import com.example.jwtFinal.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,7 @@ public class AuthController {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
+    private final RefreshTokenService refreshTokenService;
 
     @PostMapping("/signup")
     public RegisterResponseDTO createUser(@RequestBody RegisterRequestDTO requestDTO) {
@@ -50,9 +53,13 @@ public class AuthController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequestDTO.getUsername(), loginRequestDTO.getPassword())
             );
+
+            RefreshToken refreshToken = refreshTokenService.saveRefreshToken(loginRequestDTO.getUsername());
             String token = jwtUtil.generateToken(loginRequestDTO.getUsername(), loginRequestDTO.getRole());
             TokenResponseDto tokenResponseDto = new TokenResponseDto();
-            tokenResponseDto.setToken(token);
+            tokenResponseDto.setAccessToken(token);
+            tokenResponseDto.setRefreshTokenId(refreshToken.getRefreshTokenId());
+
             return tokenResponseDto;
         } catch(Exception exp) {
             log.error("Exception occurred: " + exp.getMessage());

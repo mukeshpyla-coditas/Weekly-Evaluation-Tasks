@@ -8,5 +8,6 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 public class TokenResponseDto {
-    private String token;
+    private String accessToken;
+    private String refreshTokenId;
 }

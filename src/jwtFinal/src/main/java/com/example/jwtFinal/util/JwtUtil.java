@@ -3,6 +3,7 @@ package com.example.jwtFinal.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import java.util.Date;
 
 @Component
 @ConfigurationProperties(prefix = "app")
+@RequiredArgsConstructor
 public class JwtUtil {
     private static final String secretKey = "this-is-my-secret-key-mukesh-narayana-1234567890!@#$%^&*()";
     private static final SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
@@ -21,7 +23,7 @@ public class JwtUtil {
                 .claims()
                 .subject(username)
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + (1000 * 60 * 10)))
+                .expiration(new Date(System.currentTimeMillis() + (1000 * 60 * 3)))
                 .and()
                 .claim("role", role)
                 .signWith(key, Jwts.SIG.HS256)
